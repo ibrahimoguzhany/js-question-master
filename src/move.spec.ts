@@ -75,7 +75,7 @@ describe('move', () => {
     expect(() => move(list, '2', '4')).toThrow('You cannot specify a file as the destination');
   });
 
-  // ek test
+  // destination folder must not contain a file with the same source file id
   it('throws error if destination folder contains a file that has the same id with the source file.', () => {
     const list: List = [
       {
