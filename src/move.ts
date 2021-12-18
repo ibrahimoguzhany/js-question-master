@@ -12,7 +12,9 @@ export default function move(list: List, source: string, destination: string): L
   // folder.id !== source kontrolu throws error if given source is not a file testi icin eklendi. Source tasiyacagimiz File'in id'si oluyor. Bu sebeple source folder'larin idlerinde bulunmamali.
   const sourceFolderIndex =
     // source tasiyacagimiz File'in id'sine esit olmali fakat list'in icindeki folder'larin id'sine esit olmamali. Bulamazsa,  error handling icin -1 gibi bir flag ile sourceFolderIndex'e atama yapiyorum.
-    list.findIndex((folder) => folder.files.some((file) => file.id === source) && folder.id !== source) ?? -1;
+    list.findIndex(
+      (folder) => folder.files.some((file) => file.id === source) && folder.id !== source,
+    ) ?? -1;
   if (sourceFolderIndex === -1) throw new Error('You cannot move a folder');
 
   // sourceFolderIndex source'a esit File id'ye sahip File'in indexini aliyoruz ki tasima isleminden once bu File'i cikaralim.
@@ -20,7 +22,7 @@ export default function move(list: List, source: string, destination: string): L
 
   //  destinationFolderIndex destination'a esit Folder id'ye sahip ve ayni zamanda source folder'in id'sine esit olmamali ki destination olarak file belirlenmesin.
   const destinationFolderIndex =
-    list.findIndex((folder) => folder.id == destination && folder.id !== source) ?? -1;
+    list.findIndex((folder) => folder.id === destination && folder.id !== source) ?? -1;
   if (destinationFolderIndex === -1)
     throw new Error('You cannot specify a file as the destination');
 

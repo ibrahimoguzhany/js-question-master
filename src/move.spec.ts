@@ -76,7 +76,7 @@ describe('move', () => {
   });
 
   // ek test
-  it('throws error if destination folder contains a file that has the same id with the source file. ', () => {
+  it('throws error if destination folder contains a file that has the same id with the source file.', () => {
     const list: List = [
       {
         id: '1',
